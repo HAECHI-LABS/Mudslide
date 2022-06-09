@@ -55,13 +55,15 @@ contract TestERC20 is SampleERC20, Test {
         if(ERC20.balanceOf(addr2) < amount) return;
         
         cheat.prank(addr1);
-        ERC20.approve(addr2, value);
+        ERC20.approve(addr2, value); // approve addr2 to spend addr1's balance
         require(ERC20.allowance(addr1, addr2) == value, "Allownace didn't change");
 
         emit log_uint(value);
         emit log_uint(amount);
 
-        ERC20.transferFrom(addr2, addr1, amount);
+        cheat.prank(addr2); // change msg.sender to addr2 (also, cheat.prank only lasts for 1 external call so we need to set prank everytime we call external non-view functions)
+        //ERC20.transferFrom(addr2, addr1, amount);
+        ERC20.transferFrom(addr1, addr2, amount);
         require(ERC20.allowance(addr1, addr2) == value - amount, "Allowance didn't decrease properly");
     }
 }
