@@ -56,12 +56,12 @@ contract TestERC20 is SampleERC20, Test {
         
         cheat.prank(addr1);
         ERC20.approve(addr2, value);
-        require(ERC20.allowance(addr1, addr2) == value, "Allownace not changed");
+        require(ERC20.allowance(addr1, addr2) == value, "Allownace didn't change");
 
         emit log_uint(value);
         emit log_uint(amount);
 
         ERC20.transferFrom(addr2, addr1, amount);
-        require(ERC20.allowance(addr1, addr2) == value - amount, "Allowance not decreased properly");
+        require(ERC20.allowance(addr1, addr2) == value - amount, "Allowance didn't decrease properly");
     }
 }
