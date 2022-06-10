@@ -1,3 +1,5 @@
+pragma solidity ^0.8.11;
+
 interface CheatCodes {
     // Set block.timestamp
     function warp(uint256) external;

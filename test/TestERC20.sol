@@ -20,6 +20,15 @@ contract TestERC20 is SampleERC20, Test {
         token.mint(addr2, 1e18);
     }
 
+    function testTotalSupply() public {
+        assertGt(token.totalSupply(), 0);
+    }
+
+    function testBalanceOf() public {
+        assertEq(token.balanceOf(addr1), 1e18);
+        assertEq(token.balanceOf(addr2), 1e18);
+    }
+
     function testTransfer(uint256 value) public {
         cheat.assume(value <= token.balanceOf(addr1));
 
