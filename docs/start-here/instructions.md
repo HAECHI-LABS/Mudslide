@@ -7,10 +7,10 @@ parent: Start Here
 
 # Instructions
 
-## clear contract and test files
+## use template using foundry
 
 ```shell
-npm run clear
+forge init --template https://github.com/haechi-labs/mudslide <TARGET_FOLDER>
 ```
 
 ## using foundry
