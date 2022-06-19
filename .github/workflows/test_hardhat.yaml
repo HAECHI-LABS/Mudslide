@@ -37,9 +37,6 @@ jobs:
         run: |
           sudo apt install -y build-essential
           npm install
-      - name: install-foundry
-        run: |
-          foundry install
       - name: compile
         run: npm run compile:hardhat
       - name: test
